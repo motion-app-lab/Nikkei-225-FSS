@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}利確・損切りシミュレーション | {{ app_name }}{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <a class="back-link" href="/">← メニューへ戻る</a>
+  <p class="eyebrow">TAKE PROFIT / STOP LOSS</p>
+  <h1>利確・損切りシミュレーション</h1>
+  <p>指定した利益確定率と損切り率を過去の株価データへ繰り返し適用し、仮想資金の変化を計算します。</p>
+</div>
+
+<section class="workspace-grid simulation-layout">
+  <form id="simulation-form" class="control-panel" data-api="/api/simulate" data-kind="simulation">
+    <div class="panel-heading">
+      <span>STRATEGY SETUP</span>
+      <h2>検証条件</h2>
+    </div>
+    <label class="field-label" for="ticker">日本株の証券コード</label>
+    <input id="ticker" name="ticker" class="text-input" value="7203" maxlength="4" autocomplete="off" pattern="(?:[0-9]{4}|[0-9]{3}[A-Za-z])" required>
+    <div class="security-code-help simulation-code-help">
+      <strong>入力例（いずれか1銘柄）</strong>
+      <code>7203</code>
+      <code>130A</code>
+      <p>.Tは不要です。日本株の証券コードを1銘柄だけ入力してください。</p>
+    </div>
+
+    <label class="field-label" for="initial-investment">初期投資額</label>
+    <div class="input-suffix"><input id="initial-investment" name="initial_investment" type="number" value="1000000" min="1" step="1" required><span>円</span></div>
+
+    <div class="rate-row simulation-rate-stack">
+      <div>
+        <label class="field-label" for="take-profit">利益確定条件</label>
+        <div class="input-suffix"><input id="take-profit" name="take_profit" type="number" value="10" min="0.1" step="0.1"><span>%</span></div>
+      </div>
+      <div>
+        <label class="field-label" for="stop-loss">損切り条件</label>
+        <div class="input-suffix"><input id="stop-loss" name="stop_loss" type="number" value="4" min="0.1" step="0.1"><span>%</span></div>
+        <p class="field-help">数値を入力した場合、この条件を使用します。使用しない場合は空欄にしてください。</p>
+      </div>
+    </div>
+
+    <p class="simulation-lot-note">本シミュレーションは、各購入時点の株価を基に、利用可能な資金で購入できる最大の100株単位で仮想購入します。購入に使用しなかった資金は、現金として次回の取引へ繰り越します。</p>
+
+    <button class="primary-button" type="submit">シミュレーションを実行</button>
+  </form>
+  <section id="result-panel" class="result-panel empty-state" aria-live="polite">
+    <div class="empty-visual" aria-hidden="true">¥</div>
+    <h2>指定条件を過去データで検証</h2>
+    <p>仮想資産の推移、同期間保有との比較、仮想売買ポイントと取引履歴を表示します。</p>
+  </section>
+</section>
+{% endblock %}

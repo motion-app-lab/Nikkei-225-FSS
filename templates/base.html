@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="日経平均と個別銘柄の5営業日先トレンド予測、利確・損切り条件の検証を行うローカルWebアプリ">
+  <title>{% block title %}{{ app_name }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}?v=20260721-simulation-100share-v1-final-public-v3-individual-no-accuracy-v1">
+  <script src="{{ url_for('static', path='/js/app.js') }}?v=20260721-simulation-100share-v1-final-public-v3-individual-no-accuracy-v1" defer></script>
+</head>
+<body data-page="{{ page }}">
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="トップへ戻る">
+      <span class="brand-mark" aria-hidden="true">JP</span>
+      <span>
+        <strong>{{ app_name }}</strong>
+        <small>Nikkei 225 Forecast &amp; Strategy Support System</small>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="メインナビゲーション">
+      <a href="/nikkei" {% if page == 'nikkei' %}aria-current="page"{% endif %}>日経平均</a>
+      <a href="/individual" {% if page == 'individual' %}aria-current="page"{% endif %}>個別銘柄</a>
+      <a href="/simulation" {% if page == 'simulation' %}aria-current="page"{% endif %}>利確・損切りシミュレーション</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <p>{{ disclaimer }}</p>
+    <p class="footer-meta">Local analysis tool · Runs on 127.0.0.1 only</p>
+  </footer>
+
+  <div id="loading-overlay" class="loading-overlay" hidden role="status" aria-live="polite">
+    <div class="loading-panel">
+      <span class="spinner" aria-hidden="true"></span>
+      {% if page == 'simulation' %}
+      <strong>シミュレーションを実行しています</strong>
+      <p>対象銘柄の株価データを取得し、指定条件を計算しています。しばらくお待ちください</p>
+      {% elif page == 'individual' %}
+      <strong>分析実施中</strong>
+      <p class="individual-loading-guidance">市場データの取得とモデル分析を実行しています。処理には数十秒から1分程度かかる場合があります。画面を閉じずにお待ちください。</p>
+      {% else %}
+      <strong>分析を実行しています</strong>
+      <p>市場データの取得とモデル分析を実行しています。しばらくお待ちください</p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

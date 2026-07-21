@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}このシステムについて | {{ app_name }}{% endblock %}
+{% block content %}
+<div class="page-heading compact-heading">
+  <a class="back-link" href="/">← メニューへ戻る</a>
+  <p class="eyebrow">PROJECT OVERVIEW</p>
+  <h1>このシステムについて</h1>
+</div>
+<div class="article-stack">
+  <section id="about-system" class="article-card">
+    <span class="section-index">01</span>
+    <h2>目的</h2>
+    <p>日経平均および個別銘柄の5営業日先のトレンドを予測し、利確・損切り条件を過去データで検証する、日本株向けの予測・戦略支援システムです。断定的な売買指示ではなく、判断材料を整理して提示します。</p>
+  </section>
+  <section id="build-week" class="article-card">
+    <span class="section-index">02</span>
+    <h2>Build Weekで追加した内容</h2>
+    <p>応募前から存在した3つのCMDプログラムを、FastAPI・Jinja2・Vanilla JavaScriptのローカルWebアプリへ統合しました。最新日推論の分離、直近2年間を対象とした8分割ウォークフォワード検証、5営業日のパージ期間、未来ラベル混入対策、APIキー保護、Webグラフ、エラー案内、Windows起動ファイル、テストと提出資料を追加しています。</p>
+  </section>
+  <section id="disclaimer" class="article-card warning-card">
+    <span class="section-index">03</span>
+    <h2>免責事項</h2>
+    <p>{{ disclaimer }}</p>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}日経平均トレンド予測 | {{ app_name }}{% endblock %}
+{% block content %}
+<div class="page-heading nikkei-page-heading">
+  <a class="back-link" href="/">← メニューへ戻る</a>
+  <p class="eyebrow">NIKKEI 225 · 5-DAY OUTLOOK</p>
+  <h1>日経平均トレンド予測</h1>
+  <p>5営業日先の6段階モデル出力と、短期・中長期の確定済みチャート、正式評価をまとめて確認します。</p>
+</div>
+
+<aside class="investment-warning" aria-labelledby="investment-warning-title">
+  <h2 id="investment-warning-title">投資判断に関する注意</h2>
+  <p>本予測は参考情報であり、売買を推奨するものではありません。最終的な投資判断はご自身の責任でお願いします。</p>
+</aside>
+
+<section class="nikkei-public-workspace">
+  <form id="nikkei-form" class="nikkei-run-bar" data-api="/api/predict/nikkei" data-kind="prediction">
+    <div>
+      <span class="run-bar-label">日経平均株価 <code>^N225</code></span>
+      <p>保存済みの正式モデルを使い、最新の確定データで6段階予測と分析結果を表示します。</p>
+    </div>
+    <button class="primary-button" type="submit">予測を実行 <span aria-hidden="true">→</span></button>
+  </form>
+
+  <section id="result-panel" class="result-panel nikkei-public-result empty-state" aria-live="polite">
+    <div class="empty-visual" aria-hidden="true">5D</div>
+    <h2>6段階予測と分析結果はここに表示されます</h2>
+    <p>「予測を実行」を押すと、6段階予測、60日・2年チャート、予測精度、採用ファクターを順に表示します。</p>
+  </section>
+</section>
+{% endblock %}

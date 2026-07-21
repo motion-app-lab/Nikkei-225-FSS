@@ -1,0 +1,96 @@
+[
+  {
+    "old_model_version": "nikkei_extra_trees_28f_threshold_v1",
+    "new_model_version": "nikkei_dual_market_rolling_v1",
+    "reevaluated_at": "2026-07-20T00:12:52.742124+09:00",
+    "raw_data_period": {
+      "start": "2015-04-10",
+      "end": "2026-07-17",
+      "rows": 2753
+    },
+    "training_period": {
+      "start": "2018-07-10",
+      "end": "2026-07-10",
+      "samples": 1952,
+      "base_date": "2026-07-17"
+    },
+    "evaluation_period": {
+      "start": "2024-07-10",
+      "end": "2026-07-10",
+      "samples": 488,
+      "prediction_context": "intraday"
+    },
+    "old_threshold": 0.5,
+    "new_threshold": 0.5,
+    "old_models": {
+      "combined": "extra_trees",
+      "feature_count": 28
+    },
+    "new_models": {
+      "japan": "extra_trees",
+      "overseas": "catboost_selected"
+    },
+    "old_training_weights": {
+      "combined": "uniform"
+    },
+    "new_training_weights": {
+      "japan": "uniform",
+      "overseas": "uniform",
+      "half_life_years": 4.0
+    },
+    "change_reason": "明示的なモデル再評価：日米別モデル、ローリング8年、300取引日ウォームアップ、直近2年の外側評価、学習重み比較へ移行"
+  },
+  {
+    "old_model_version": "nikkei_dual_market_rolling_v1",
+    "new_model_version": "nikkei_dual_market_rolling_v1",
+    "reevaluated_at": "2026-07-21T08:01:33.134432+09:00",
+    "raw_data_period": {
+      "start": "2015-04-10",
+      "end": "2026-07-17",
+      "rows": 2753
+    },
+    "training_period": {
+      "start": "2018-07-10",
+      "end": "2026-07-10",
+      "samples": 1952,
+      "base_date": "2026-07-17"
+    },
+    "evaluation_periods": {
+      "intraday": {
+        "start": "2024-07-10",
+        "end": "2026-07-10"
+      },
+      "after_close": {
+        "start": "2024-07-10",
+        "end": "2026-07-10"
+      }
+    },
+    "old_threshold": 0.5,
+    "new_threshold": 0.5,
+    "old_models": {
+      "japan": "extra_trees",
+      "japan_label": "Extra Trees",
+      "overseas": "catboost_selected",
+      "overseas_label": "学習内特徴量選択CatBoost"
+    },
+    "new_models": {
+      "japan": "extra_trees",
+      "japan_label": "Extra Trees",
+      "overseas": "catboost_selected",
+      "overseas_label": "学習内特徴量選択CatBoost"
+    },
+    "old_training_weights": {
+      "japan": "uniform",
+      "overseas": "uniform",
+      "half_life_years": 4.0,
+      "decay_formula": "0.5 ** (age_years / 4.0)"
+    },
+    "new_training_weights": {
+      "japan": "uniform",
+      "overseas": "uniform",
+      "half_life_years": 4.0,
+      "decay_formula": "0.5 ** (age_years / 4.0)"
+    },
+    "reason": "明示的なモデル再評価：日米別モデル、ローリング8年、直近2年の外側評価、学習重み比較へ移行"
+  }
+]

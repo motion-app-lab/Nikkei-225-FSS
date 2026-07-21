@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}{{ app_name }}{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">OPENAI BUILD WEEK 2026</p>
+    <h1>市場予測と戦略検証を、<br><span>ひとつの分析フローへ。</span></h1>
+    <p class="hero-copy">日本株の短期トレンド予測から、利確・損切り戦略の検証までを一つの画面で支援します。</p>
+  </div>
+  <aside class="hero-status" aria-label="システム概要">
+    <span class="status-dot"></span>
+    <div>
+      <small>ANALYSIS HORIZON</small>
+      <strong>5 Trading Days</strong>
+    </div>
+    <div>
+      <small>VALIDATION</small>
+      <strong>8-Fold Walk-Forward</strong>
+    </div>
+    <div>
+      <small>EXECUTION</small>
+      <strong>Local Only</strong>
+    </div>
+  </aside>
+</section>
+
+<section class="menu-grid" aria-label="分析メニュー">
+  <a class="menu-card" href="/nikkei">
+    <span class="menu-number">01</span>
+    <span class="menu-icon" aria-hidden="true">N225</span>
+    <h2>日経平均トレンド予測</h2>
+    <p>日経平均株価の5営業日先を予測</p>
+    <span class="card-action">分析画面を開く <b aria-hidden="true">→</b></span>
+  </a>
+  <a class="menu-card" href="/individual">
+    <span class="menu-number">02</span>
+    <span class="menu-icon" aria-hidden="true">TICKER</span>
+    <h2>個別銘柄トレンド予測</h2>
+    <p>証券コードを入力して5営業日先を予測</p>
+    <span class="card-action">分析画面を開く <b aria-hidden="true">→</b></span>
+  </a>
+  <a class="menu-card" href="/simulation">
+    <span class="menu-number">03</span>
+    <span class="menu-icon" aria-hidden="true">P / L</span>
+    <h2>利確・損切りシミュレーション</h2>
+    <p>指定した利益確定率・損切り率を過去データで検証</p>
+    <span class="card-action">検証画面を開く <b aria-hidden="true">→</b></span>
+  </a>
+</section>
+
+<section class="home-links" aria-label="補足情報">
+  <a href="/about#about-system">このシステムについて</a>
+  <a href="/about#build-week">Build Weekで追加した内容</a>
+  <a href="/about#disclaimer">免責事項</a>
+</section>
+{% endblock %}

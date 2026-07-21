@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}個別銘柄トレンド予測 | {{ app_name }}{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <a class="back-link" href="/">← メニューへ戻る</a>
+  <p class="eyebrow">SINGLE TICKER · 5-DAY OUTLOOK</p>
+  <h1>個別銘柄トレンド予測</h1>
+  <p>日本株を1銘柄ずつ、確定した日足データで分析します。</p>
+</div>
+
+<section class="workspace-grid">
+  <form id="individual-form" class="control-panel" data-api="/api/predict/individual" data-kind="prediction">
+    <div class="panel-heading">
+      <span>ANALYSIS SETUP</span>
+      <h2>銘柄を指定</h2>
+    </div>
+    <label class="field-label" for="ticker">日本株の証券コード</label>
+    <input id="ticker" name="ticker" class="text-input" value="7203" maxlength="4" autocomplete="off" inputmode="text" pattern="(?:[0-9]{4}|[0-9]{3}[A-Za-z])" required aria-describedby="ticker-help">
+    <p id="ticker-help" class="helper-text individual-code-example">
+      <span>入力例（いずれか1銘柄）</span>
+      <code>7203</code>
+      <code>130A</code>
+      <span>.Tは不要です。日本株の証券コードを1銘柄だけ入力してください。</span>
+    </p>
+    <button class="primary-button" type="submit">予測を実行 <span aria-hidden="true">→</span></button>
+  </form>
+  <section id="result-panel" class="result-panel empty-state" aria-live="polite">
+    <div class="empty-visual" aria-hidden="true">1×</div>
+    <h2>1銘柄の分析に集中</h2>
+    <p>今回の予測、チャート、過去の値動きを整理したレポート、予測モデルの情報を一つの画面で確認できます。</p>
+  </section>
+</section>
+{% endblock %}
