@@ -74,7 +74,7 @@ Key characteristics:
   - the market factors used for the current forecast,
   - feature importance.
 
-**Individual-stock accuracy metrics are intentionally not displayed or bundled.** The page focuses on the current model output, recent chart behavior, longer-term chart behavior, and the market factors behind the forecast.
+The page focuses on the current model output, recent chart behavior, longer-term chart behavior, and the market factors behind the forecast.
 
 The chart reports are generated from deterministic, safety-checked templates. They do not call an external large language model and do not provide trade timing advice.
 
